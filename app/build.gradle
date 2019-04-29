@@ -24,6 +24,12 @@ android {
     }
 }
 
+repositories {
+    flatDir {
+        dirs 'libs'
+    }
+}
+
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'androidx.appcompat:appcompat:1.1.0-alpha04'
@@ -38,4 +44,10 @@ dependencies {
 //这里要排除到这个包，这个包会与 com.google.guava 冲突，导致编译不过
         all*.exclude group: 'com.google.guava', module: 'listenablefuture'
     }
+    implementation files('libs/afinal_0.5.1_bin.jar')
+    implementation files('libs/fastjson-1.2.4.jar')
+    compile(name: 'datetime-1.0.99', ext: 'aar')
+    compile 'com.daimajia.easing:library:2.0@aar'
+    compile 'com.daimajia.androidanimations:library:2.2@aar'
+    implementation files('libs/joda-time-2.3.jar')
 }

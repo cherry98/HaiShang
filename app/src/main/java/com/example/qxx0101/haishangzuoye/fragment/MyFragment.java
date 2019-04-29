@@ -1,12 +1,16 @@
 package com.example.qxx0101.haishangzuoye.fragment;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.qxx0101.haishangzuoye.R;
+import com.example.qxx0101.haishangzuoye.activity.MyCardActivity;
+import com.example.qxx0101.haishangzuoye.activity.SettingActivity;
+import com.example.qxx0101.haishangzuoye.activity.TaskHistoryActivity;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -17,7 +21,7 @@ import butterknife.ButterKnife;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class MyFragment extends Fragment {
+public class MyFragment extends Fragment implements View.OnClickListener {
 
 
     public MyFragment() {
@@ -35,14 +39,34 @@ public class MyFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View inflate = inflater.inflate(R.layout.fragment_my, container, false);
-        ButterKnife.bind(this,inflate);
+        ButterKnife.bind(this, inflate);
         return inflate;
     }
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        myCard.setOnClickListener(this);
+        myTask.setOnClickListener(this);
+        mySetting.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.my_card: {
+                startActivity(new Intent(getContext(), MyCardActivity.class));
+            }
+            break;
+            case R.id.my_task: {
+                startActivity(new Intent(getContext(), TaskHistoryActivity.class));
+            }
+            break;
+            case R.id.my_setting: {
+                startActivity(new Intent(getContext(), SettingActivity.class));
+            }
+            break;
+        }
     }
 }

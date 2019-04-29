@@ -3,6 +3,7 @@ package com.example.qxx0101.haishangzuoye;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -46,15 +47,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @BindView(R.id.main_my)
     View my;
 
-    @BindView(R.id.fragment)
-    View fragment;
-
-    WorkFragment workFragment;
-    CalendarFragment calendarFragment;
-    MessageFragment messageFragment;
-    MyFragment myFragment;
-    FragmentManager fragmentManager;
-    FragmentTransaction fragmentTransaction;
+    private WorkFragment workFragment;
+    private CalendarFragment calendarFragment;
+    private MessageFragment messageFragment;
+    private MyFragment myFragment;
+    private FragmentManager fragmentManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
