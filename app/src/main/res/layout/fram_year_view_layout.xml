@@ -2,7 +2,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"  >
 
-    <com.example.qxx0101.haishangzuoye.calendar.year.YearView
+    <com.example.haishangzuoye.calendar.year.YearView
         android:id="@+id/yearview"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

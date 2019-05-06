@@ -42,7 +42,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <com.example.qxx0101.haishangzuoye.calendar.view.slidelayout.ScheduleLayout
+                <com.example.haishangzuoye.calendar.view.slidelayout.ScheduleLayout
                     android:id="@+id/slSchedule"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
@@ -63,7 +63,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content">
 
-                                <com.example.qxx0101.haishangzuoye.calendar.month.MonthCalendarView
+                                <com.example.haishangzuoye.calendar.month.MonthCalendarView
                                     android:id="@+id/mcvCalendar"
                                     android:layout_width="match_parent"
                                     android:layout_height="@dimen/month_calendar_height"
@@ -72,7 +72,7 @@
                             </RelativeLayout>
 
                             <!-- 周视图 -->
-                            <com.example.qxx0101.haishangzuoye.calendar.week.WeekCalendarView
+                            <com.example.haishangzuoye.calendar.week.WeekCalendarView
                                 android:id="@+id/wcvCalendar"
                                 android:layout_width="match_parent"
                                 android:layout_height="@dimen/week_calendar_height"
@@ -93,7 +93,7 @@
                                 android:id="@+id/month_view_bottom_line"
                                 style="@style/Title_bar_below_ViewSeparator" />
 
-                            <com.example.qxx0101.haishangzuoye.calendar.view.slidelayout.ScheduleRecyclerView
+                            <com.example.haishangzuoye.calendar.view.slidelayout.ScheduleRecyclerView
                                 android:layout_below="@id/month_view_bottom_line"
                                 android:id="@+id/rvScheduleList"
                                 android:layout_width="match_parent"
@@ -117,7 +117,7 @@
 
                     </LinearLayout>
 
-                </com.example.qxx0101.haishangzuoye.calendar.view.slidelayout.ScheduleLayout>
+                </com.example.haishangzuoye.calendar.view.slidelayout.ScheduleLayout>
 
             </RelativeLayout>
 

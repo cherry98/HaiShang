@@ -12,7 +12,7 @@
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
-        <com.example.qxx0101.haishangzuoye.calendar.view.WeekTitleTextView
+        <com.example.haishangzuoye.calendar.view.WeekTitleTextView
             android:id="@+id/d6_label"
             android:layout_width="0dip"
             android:layout_height="wrap_content"
@@ -23,7 +23,7 @@
             android:textColor="@color/weekend_txt_color"
             android:textSize="@dimen/DIMEN_39PX" />
 
-        <com.example.qxx0101.haishangzuoye.calendar.view.WeekTitleTextView
+        <com.example.haishangzuoye.calendar.view.WeekTitleTextView
             android:id="@+id/d0_label"
             android:layout_width="0dip"
             android:layout_height="wrap_content"
@@ -34,7 +34,7 @@
             android:textColor="@color/schedule_menu_text"
             android:textSize="@dimen/DIMEN_39PX" />
 
-        <com.example.qxx0101.haishangzuoye.calendar.view.WeekTitleTextView
+        <com.example.haishangzuoye.calendar.view.WeekTitleTextView
             android:id="@+id/d1_label"
             android:layout_width="0dip"
             android:layout_height="wrap_content"
@@ -45,7 +45,7 @@
             android:textColor="@color/schedule_menu_text"
             android:textSize="@dimen/DIMEN_39PX" />
 
-        <com.example.qxx0101.haishangzuoye.calendar.view.WeekTitleTextView
+        <com.example.haishangzuoye.calendar.view.WeekTitleTextView
             android:id="@+id/d2_label"
             android:layout_width="0dip"
             android:layout_height="wrap_content"
@@ -56,7 +56,7 @@
             android:textColor="@color/schedule_menu_text"
             android:textSize="@dimen/DIMEN_39PX" />
 
-        <com.example.qxx0101.haishangzuoye.calendar.view.WeekTitleTextView
+        <com.example.haishangzuoye.calendar.view.WeekTitleTextView
             android:id="@+id/d3_label"
             android:layout_width="0dip"
             android:layout_height="wrap_content"
@@ -67,7 +67,7 @@
             android:textColor="@color/schedule_menu_text"
             android:textSize="@dimen/DIMEN_39PX" />
 
-        <com.example.qxx0101.haishangzuoye.calendar.view.WeekTitleTextView
+        <com.example.haishangzuoye.calendar.view.WeekTitleTextView
             android:id="@+id/d4_label"
             android:layout_width="0dip"
             android:layout_height="wrap_content"
@@ -78,7 +78,7 @@
             android:textColor="@color/schedule_menu_text"
             android:textSize="@dimen/DIMEN_39PX" />
 
-        <com.example.qxx0101.haishangzuoye.calendar.view.WeekTitleTextView
+        <com.example.haishangzuoye.calendar.view.WeekTitleTextView
             android:id="@+id/d5_label"
             android:layout_width="0dip"
             android:layout_height="wrap_content"
