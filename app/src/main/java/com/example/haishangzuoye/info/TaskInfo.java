@@ -2,37 +2,30 @@ package com.example.haishangzuoye.info;
 
 public class TaskInfo {
 
+
     /**
-     * taskTitle : 任务标题1
-     * taskType : 任务类型1
-     * taskStatus : 0（未接收）1（正在进行）
-     * taskAddress : 任务地点1
-     * taskDate : 任务时间1
-     * taskNumber : 任务需要人数1
+     * taskContent : 表白被拒纪念币那你不会
+     * create_time : 2019-05-10 16:25:39
+     * taskDate : 25
+     * type_id : 1
+     * typeName : 救援
+     * taskTitle : 独孤九剑
+     * taskNumber : 放假
+     * userId : 2
+     * taskId : 4
+     * taskAddress : 训你
      */
 
-    private String taskTitle;
-    private String taskType;
-    private String taskStatus;
-    private String taskAddress;
+    private String taskContent;
+    private String create_time;
     private String taskDate;
+    private String type_id;
+    private String typeName;
+    private String taskTitle;
     private String taskNumber;
-
-    public String getTaskTitle() {
-        return taskTitle;
-    }
-
-    public void setTaskTitle(String taskTitle) {
-        this.taskTitle = taskTitle;
-    }
-
-    public String getTaskType() {
-        return taskType;
-    }
-
-    public void setTaskType(String taskType) {
-        this.taskType = taskType;
-    }
+    private String taskId;
+    private String taskAddress;
+    private String taskStatus;
 
     public String getTaskStatus() {
         return taskStatus;
@@ -42,12 +35,20 @@ public class TaskInfo {
         this.taskStatus = taskStatus;
     }
 
-    public String getTaskAddress() {
-        return taskAddress;
+    public String getTaskContent() {
+        return taskContent;
     }
 
-    public void setTaskAddress(String taskAddress) {
-        this.taskAddress = taskAddress;
+    public void setTaskContent(String taskContent) {
+        this.taskContent = taskContent;
+    }
+
+    public String getCreate_time() {
+        return create_time;
+    }
+
+    public void setCreate_time(String create_time) {
+        this.create_time = create_time;
     }
 
     public String getTaskDate() {
@@ -58,11 +59,51 @@ public class TaskInfo {
         this.taskDate = taskDate;
     }
 
+    public String getType_id() {
+        return type_id;
+    }
+
+    public void setType_id(String type_id) {
+        this.type_id = type_id;
+    }
+
+    public String getTypeName() {
+        return typeName;
+    }
+
+    public void setTypeName(String typeName) {
+        this.typeName = typeName;
+    }
+
+    public String getTaskTitle() {
+        return taskTitle;
+    }
+
+    public void setTaskTitle(String taskTitle) {
+        this.taskTitle = taskTitle;
+    }
+
     public String getTaskNumber() {
         return taskNumber;
     }
 
     public void setTaskNumber(String taskNumber) {
         this.taskNumber = taskNumber;
+    }
+
+    public String getTaskId() {
+        return taskId;
+    }
+
+    public void setTaskId(String taskId) {
+        this.taskId = taskId;
+    }
+
+    public String getTaskAddress() {
+        return taskAddress;
+    }
+
+    public void setTaskAddress(String taskAddress) {
+        this.taskAddress = taskAddress;
     }
 }

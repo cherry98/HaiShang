@@ -23,6 +23,7 @@
                 android:src="@mipmap/ic_launcher" />
 
             <TextView
+                android:id="@+id/nickname"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingLeft="20dp"
@@ -30,30 +31,35 @@
         </LinearLayout>
 
         <TextView
+            android:id="@+id/sex"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:gravity="center_vertical"
             android:text="性别：男" />
 
         <TextView
+            android:id="@+id/age"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:gravity="center_vertical"
             android:text="年龄：18" />
 
         <TextView
+            android:id="@+id/name"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:gravity="center_vertical"
             android:text="真实姓名：你猜啊" />
 
         <TextView
+            android:id="@+id/org"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:gravity="center_vertical"
             android:text="工作单位：无名" />
 
         <TextView
+            android:id="@+id/phone"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:gravity="center_vertical"

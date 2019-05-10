@@ -8,9 +8,14 @@ import android.view.ViewGroup;
 
 import com.alibaba.fastjson.JSON;
 import com.example.haishangzuoye.R;
+import com.example.haishangzuoye.Utils.Api;
+import com.example.haishangzuoye.Utils.SharedPreferencesUtils;
 import com.example.haishangzuoye.adapter.MessageAdapter;
 
+import org.json.JSONObject;
+
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -20,6 +25,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 
 /**
@@ -47,52 +56,31 @@ public class MessageFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        getMessageList();
-    }
-
-    private void getMessageList() {
-        String json = "[\n" +
-            "    {\n" +
-            "        \"messageImg\":\"\",\n" +
-            "        \"messageTitle\":\"消息标题\",\n" +
-            "        \"messageContent\":\"消息内容\"\n" +
-            "    },\n" +
-            "    {\n" +
-            "        \"messageImg\":\"\",\n" +
-            "        \"messageTitle\":\"消息标题\",\n" +
-            "        \"messageContent\":\"消息内容\"\n" +
-            "    },\n" +
-            "    {\n" +
-            "        \"messageImg\":\"\",\n" +
-            "        \"messageTitle\":\"消息标题\",\n" +
-            "        \"messageContent\":\"消息内容\"\n" +
-            "    },\n" +
-            "    {\n" +
-            "        \"messageImg\":\"\",\n" +
-            "        \"messageTitle\":\"消息标题\",\n" +
-            "        \"messageContent\":\"消息内容\"\n" +
-            "    },\n" +
-            "    {\n" +
-            "        \"messageImg\":\"\",\n" +
-            "        \"messageTitle\":\"消息标题\",\n" +
-            "        \"messageContent\":\"消息内容\"\n" +
-            "    },\n" +
-            "    {\n" +
-            "        \"messageImg\":\"\",\n" +
-            "        \"messageTitle\":\"消息标题\",\n" +
-            "        \"messageContent\":\"消息内容\"\n" +
-            "    },\n" +
-            "    {\n" +
-            "        \"messageImg\":\"\",\n" +
-            "        \"messageTitle\":\"消息标题\",\n" +
-            "        \"messageContent\":\"消息内容\"\n" +
-            "    }\n" +
-            "]";
-        ArrayList<Map<String, String>> list = (ArrayList<Map<String, String>>) JSON.parseObject(json, List.class);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
-        MessageAdapter messageAdapter = new MessageAdapter(getContext(), list);
-        recyclerView.setAdapter(messageAdapter);
+//        MessageAdapter messageAdapter = new MessageAdapter(getContext(), list);
+//        recyclerView.setAdapter(messageAdapter);
+    }
+
+    @Override
+    public void onResume() {
+        getMessageList();
+        super.onResume();
+    }
+
+    private void getMessageList() {
+        Retrofit retrofit = new Retrofit.Builder()
+            .baseUrl("http://wxooxw.com:8180/sea/seaController/") // 设置 网络请求 Url
+            .addConverterFactory(GsonConverterFactory.create()) //设置使用Gson解析(记得加入依赖)
+            .build();
+        Api api = retrofit.create(Api.class);
+        Map<String, String> params = new HashMap<>();
+        params.put("userId", SharedPreferencesUtils.getUserId(getContext()));
+//        params.put("taskId", list.get(position).getTaskId());
+//        params.put("content", content);
+        String vars = new JSONObject(params).toString();
+        Call<ResponseBody> call = api.addMessage(vars);
+
     }
 }

@@ -12,14 +12,26 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.text.TextUtils;
+import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.haishangzuoye.R;
+import com.example.haishangzuoye.Utils.Api;
+import com.example.haishangzuoye.Utils.SharedPreferencesUtils;
+
+import org.json.JSONObject;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.HashMap;
+import java.util.Map;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -29,12 +41,29 @@ import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MyCardActivity extends BaseActivity {
 
     @BindView(R.id.head_img)
     ImageView headImg;
-
+    @BindView(R.id.phone)
+    TextView phone;
+    @BindView(R.id.nickname)
+    TextView nickname;
+    @BindView(R.id.name)
+    TextView name;
+    @BindView(R.id.sex)
+    TextView sex;
+    @BindView(R.id.age)
+    TextView age;
+    @BindView(R.id.org)
+    TextView org;
     private static int REQUEST_CAMERA = 1;
     private static int IMAGE_REQUEST_CODE = 2;
     private File file;
@@ -46,6 +75,7 @@ public class MyCardActivity extends BaseActivity {
         setContentView(R.layout.activity_my_card);
         ButterKnife.bind(this);
         setToolBar();
+        getData();
         headImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -63,6 +93,48 @@ public class MyCardActivity extends BaseActivity {
                             }
                         }
                     }).show();
+            }
+        });
+    }
+
+    private void getData() {
+        Retrofit retrofit = new Retrofit.Builder()
+            .baseUrl("http://wxooxw.com:8180/sea/seaController/") // 设置 网络请求 Url
+            .addConverterFactory(GsonConverterFactory.create()) //设置使用Gson解析(记得加入依赖)
+            .build();
+        Api api = retrofit.create(Api.class);
+        Map<String, String> params = new HashMap<>();
+        params.put("userId", SharedPreferencesUtils.getUserId(this));
+        String vars = new JSONObject(params).toString();
+        Call<ResponseBody> call = api.editUserData(vars);
+        call.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                try {
+                    String str = new String(response.body().bytes());
+
+                    JSONObject jsonObject = new JSONObject(str);
+                    int status = jsonObject.getInt("status");
+                    if (status == 1) {
+                        jsonObject = jsonObject.optJSONObject("result");
+                        org.setText("工作单位：" + jsonObject.getString("workAddress"));
+                        phone.setText("联系方式：" + jsonObject.getString("realPhone"));
+                        age.setText("年龄：" + jsonObject.getString("age"));
+                        sex.setText("性别：" + jsonObject.getString("sex"));
+                        name.setText("真实姓名：" + jsonObject.getString("realName"));
+                        nickname.setText("昵称：" + jsonObject.getString("nickName"));
+                    } else {
+                        Toast.makeText(MyCardActivity.this, jsonObject.getString("message"), Toast.LENGTH_SHORT).show();
+                    }
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+
             }
         });
     }

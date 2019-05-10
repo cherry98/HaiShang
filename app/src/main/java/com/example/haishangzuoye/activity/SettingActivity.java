@@ -6,6 +6,7 @@ import android.widget.CompoundButton;
 import android.widget.Toast;
 
 import com.example.haishangzuoye.R;
+import com.example.haishangzuoye.Utils.SharedPreferencesUtils;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.widget.SwitchCompat;
@@ -48,5 +49,6 @@ public class SettingActivity extends BaseActivity {
     }
 
     public void button_loginout(View view) {
+        SharedPreferencesUtils.setLoggedStatus(this, false);
     }
 }

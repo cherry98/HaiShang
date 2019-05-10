@@ -4,9 +4,11 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.haishangzuoye.R;
+import com.example.haishangzuoye.info.TaskInfo;
 
 import java.util.List;
 import java.util.Map;
@@ -19,10 +21,10 @@ import butterknife.ButterKnife;
 public class TaskAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private Context context;
-    private List list;
+    private List<TaskInfo> list;
     private OnItemClickListener onItemClickListener;
 
-    public TaskAdapter(Context context, List list) {
+    public TaskAdapter(Context context, List<TaskInfo> list) {
         this.context = context;
         this.list = list;
     }
@@ -40,19 +42,26 @@ public class TaskAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         ViewHolder viewHolder = (ViewHolder) holder;
-        viewHolder.title.setText(((Map) list.get(position)).get("taskTitle") + "");
-        viewHolder.addr.setText(((Map) list.get(position)).get("taskAddress") + "");
-        viewHolder.date.setText(((Map) list.get(position)).get("taskDate") + "");
-        viewHolder.num.setText(((Map) list.get(position)).get("taskNumber") + "");
-        viewHolder.type.setText(((Map) list.get(position)).get("taskType") + "");
-        String status = ((Map) list.get(position)).get("taskStatus") + "";
+        TaskInfo taskInfo = list.get(position);
+        viewHolder.title.setText(taskInfo.getTaskTitle());
+        viewHolder.addr.setText(taskInfo.getTaskAddress());
+        viewHolder.date.setText(taskInfo.getTaskDate());
+        viewHolder.num.setText(taskInfo.getTaskNumber() + "人");
+        viewHolder.type.setText(taskInfo.getTypeName());
+        String status = taskInfo.getTaskStatus();
         if ("0".equals(status)) {
             viewHolder.status.setText("未接收");
-        } else {
+        } else if ("1".equals(status)) {
             viewHolder.status.setText("进行中");
+        } else {
+            viewHolder.status.setText("已完成");
         }
+        viewHolder.comment.setOnClickListener(view -> {
+            onItemClickListener.comment(position);
+        });
 
-        viewHolder.itemView.setOnClickListener(view -> onItemClickListener.onItemClick(position));
+        viewHolder.itemView.setOnClickListener(view ->
+            onItemClickListener.onItemClick(position));
     }
 
     @Override
@@ -74,6 +83,8 @@ public class TaskAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         TextView type;
         @BindView(R.id.task_num)
         TextView num;
+        @BindView(R.id.task_comment)
+        ImageView comment;
 
         private ViewHolder(View itemView) {
             super(itemView);
@@ -83,5 +94,7 @@ public class TaskAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     public static interface OnItemClickListener {
         void onItemClick(int position);
+
+        void comment(int position);
     }
 }
