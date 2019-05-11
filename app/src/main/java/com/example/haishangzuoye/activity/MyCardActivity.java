@@ -87,20 +87,24 @@ public class MyCardActivity extends BaseActivity {
         headImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String[] items = {"拍照", "相册选取"};
-                new AlertDialog.Builder(MyCardActivity.this)
-                    .setIcon(R.mipmap.ic_launcher)
-                    .setTitle("请选择")
-                    .setItems(items, new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            if (i == 0) {
-                                applyWritePermission();
-                            } else {
-                                getPhoto();
+                if (SharedPreferencesUtils.getLoggedStatus(MyCardActivity.this)) {
+                    String[] items = {"拍照", "相册选取"};
+                    new AlertDialog.Builder(MyCardActivity.this)
+                        .setIcon(R.mipmap.ic_launcher)
+                        .setTitle("请选择")
+                        .setItems(items, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                if (i == 0) {
+                                    applyWritePermission();
+                                } else {
+                                    getPhoto();
+                                }
                             }
-                        }
-                    }).show();
+                        }).show();
+                } else {
+                    startActivity(new Intent(MyCardActivity.this, LoginActivity.class));
+                }
             }
         });
     }
