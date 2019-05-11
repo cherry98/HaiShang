@@ -50,5 +50,6 @@ public class SettingActivity extends BaseActivity {
 
     public void button_loginout(View view) {
         SharedPreferencesUtils.setLoggedStatus(this, false);
+        finish();
     }
 }
