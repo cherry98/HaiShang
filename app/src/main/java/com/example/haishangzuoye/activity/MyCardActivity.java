@@ -76,6 +76,14 @@ public class MyCardActivity extends BaseActivity {
         ButterKnife.bind(this);
         setToolBar();
         getData();
+
+        if (SharedPreferencesUtils.getLoggedStatus(this)) {
+            if (!TextUtils.isEmpty(SharedPreferencesUtils.getImage(this))) {
+                Bitmap bitmap = BitmapFactory.decodeFile(SharedPreferencesUtils.getImage(this));
+                headImg.setImageBitmap(bitmap);
+            }
+        }
+
         headImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -200,6 +208,7 @@ public class MyCardActivity extends BaseActivity {
             Log.e("TAG", "---------" + FileProvider.getUriForFile(this, "com.example.haishangzuoye.fileprovider", file));
             headImg.setImageBitmap(BitmapFactory.decodeFile(file.getAbsolutePath()));
             //在手机相册中显示刚拍摄的图片
+            SharedPreferencesUtils.setImage(this, file.getAbsolutePath());
             Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
             Uri contentUri = Uri.fromFile(file);
             mediaScanIntent.setData(contentUri);
@@ -214,6 +223,7 @@ public class MyCardActivity extends BaseActivity {
                 cursor.moveToFirst();
                 int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
                 paths = cursor.getString(columnIndex);  //获取照片路径
+                SharedPreferencesUtils.setImage(this, paths);
                 cursor.close();
                 Bitmap bitmap = BitmapFactory.decodeFile(paths);
                 headImg.setImageBitmap(bitmap);

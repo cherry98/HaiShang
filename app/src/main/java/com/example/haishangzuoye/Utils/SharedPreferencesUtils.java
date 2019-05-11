@@ -30,4 +30,15 @@ public class SharedPreferencesUtils {
         editor.putString("userId", userId);
         editor.apply();
     }
+
+    public static void setImage(Context context, String file) {
+        SharedPreferences sharedpreferences = context.getSharedPreferences(USER, MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedpreferences.edit();
+        editor.putString("image", file);
+        editor.apply();
+    }
+
+    public static String getImage(Context context) {
+        return context.getSharedPreferences(USER, MODE_PRIVATE).getString("image", "");
+    }
 }

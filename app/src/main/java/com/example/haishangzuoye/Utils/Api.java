@@ -47,10 +47,21 @@ public interface Api {
     Call<ResponseBody> addMessage(@Field("vars") String vars);
 
     @FormUrlEncoded
-    @POST("taskMessageList")
-    Call<ResponseBody> taskMessageList(@Field("vars") String vars);
+    @POST("userTaskList")
+    Call<ResponseBody> userTaskList(@Field("vars") String vars);
 
     @FormUrlEncoded
     @POST("setSign")
     Call<ResponseBody> setSign(@Field("vars") String vars);
+
+    @FormUrlEncoded
+    @POST("signList")
+    Call<ResponseBody> signList(@Field("vars") String vars);
+
+    @POST("taskAllMessageList")
+    Call<ResponseBody> taskAllMessageList();
+
+    @FormUrlEncoded
+    @POST("userAllTaskList")
+    Call<ResponseBody> userAllTaskList(@Field("vars") String vars);
 }
