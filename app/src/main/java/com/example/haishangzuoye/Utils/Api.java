@@ -16,6 +16,10 @@ public interface Api {
     Call<ResponseBody> register(@Field("vars") String vars);
 
     @FormUrlEncoded
+    @POST("editPwd")
+    Call<ResponseBody> editPwd(@Field("vars") String vars);
+
+    @FormUrlEncoded
     @POST("fabuTask")
     Call<ResponseBody> fabuTask(@Field("vars") String vars);
 
@@ -64,4 +68,13 @@ public interface Api {
     @FormUrlEncoded
     @POST("userAllTaskList")
     Call<ResponseBody> userAllTaskList(@Field("vars") String vars);
+
+
+    @FormUrlEncoded
+    @POST("taskMessageList")
+    Call<ResponseBody> taskMessageList(@Field("vars") String vars);
+
+    @FormUrlEncoded
+    @POST("getUserAllTask")
+    Call<ResponseBody> getUserAllTask(@Field("vars") String vars);
 }

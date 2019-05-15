@@ -25,6 +25,9 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+/**
+ * 注册页面
+ */
 public class RegisterActivity extends BaseActivity {
     @BindView(R.id.input_account)
     EditText account;
@@ -44,8 +47,6 @@ public class RegisterActivity extends BaseActivity {
     EditText org;
     @BindView(R.id.input_age)
     EditText age;
-    @BindView(R.id.submit)
-    Button submit;
     @BindView(R.id.code)
     EditText code;
 
@@ -54,18 +55,24 @@ public class RegisterActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         ButterKnife.bind(this);
-        int type = getIntent().getIntExtra("type", 0);
-        if (type == 0) {//注册
-            submit.setText("注册");
-        } else {
-            submit.setText("修改");
-        }
+    }
+
+    @OnClick(R.id.codeButton)
+    public void codeButtonClick() {
+        new Thread(() -> {
+            try {
+                Thread.sleep(1000);
+                code.setText("111111");
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }).start();
     }
 
     @OnClick(R.id.submit)
     public void submitClick() {
         if (TextUtils.isEmpty(account.getText().toString())) {
-            Toast.makeText(this, "请输入您的账号", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "请输入您的手机号码", Toast.LENGTH_SHORT).show();
             return;
         }
         if (TextUtils.isEmpty(code.getText().toString())) {
@@ -101,7 +108,7 @@ public class RegisterActivity extends BaseActivity {
             return;
         }
         if (TextUtils.isEmpty(phone.getText().toString())) {
-            Toast.makeText(this, "请输入您的手机号码", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "请输入您的联系方式", Toast.LENGTH_SHORT).show();
             return;
         }
         if (TextUtils.isEmpty(org.getText().toString())) {

@@ -6,6 +6,9 @@ import android.view.MenuItem;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+/**
+ * 所有activity的基类
+ */
 public class BaseActivity extends AppCompatActivity {
 
     @Override

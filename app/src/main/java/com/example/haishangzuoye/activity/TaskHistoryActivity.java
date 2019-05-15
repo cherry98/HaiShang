@@ -41,7 +41,7 @@ public class TaskHistoryActivity extends BaseActivity {
         setContentView(R.layout.activity_task_history);
         ButterKnife.bind(this);
         setToolBar();
-        taskAdapter = new TaskAdapter(this, list);
+        taskAdapter = new TaskAdapter(this, list, false);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
@@ -82,12 +82,13 @@ public class TaskHistoryActivity extends BaseActivity {
                             taskInfo.setTaskAddress(jsonObject1.getString("taskAddress"));
                             taskInfo.setTaskContent(jsonObject1.getString("taskContent"));
                             taskInfo.setTaskDate(jsonObject1.getString("taskDate"));
-                            taskInfo.setTaskId(jsonObject1.getString("userId"));
+                            taskInfo.setTaskId(jsonObject1.getString("taskId"));
                             taskInfo.setType_id(jsonObject1.getString("type_id"));
                             taskInfo.setTaskNumber(jsonObject1.getString("taskNumber"));
                             taskInfo.setTypeName(jsonObject1.getString("typeName"));
                             taskInfo.setTaskTitle(jsonObject1.getString("taskTitle"));
                             taskInfo.setTaskStatus(jsonObject1.getString("taskStatus"));
+                            taskInfo.setTaskHave(jsonObject1.getString("taskHave"));
                             list.add(taskInfo);
                         }
                         taskAdapter.notifyDataSetChanged();

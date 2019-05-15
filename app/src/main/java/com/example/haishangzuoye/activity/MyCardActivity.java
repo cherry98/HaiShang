@@ -48,6 +48,9 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+/**
+ * 我的名片
+ */
 public class MyCardActivity extends BaseActivity {
 
     @BindView(R.id.head_img)

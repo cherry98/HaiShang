@@ -1,6 +1,6 @@
 package com.example.haishangzuoye.info;
 
-public class MessageInfo {
+public class CommentInfo {
 
     /**
      * create_time : 2019-05-10 21:05:28
@@ -15,6 +15,15 @@ public class MessageInfo {
     private String userId;
     private String taskId;
     private String content;
+    private String realName;
+
+    public String getRealName() {
+        return realName;
+    }
+
+    public void setRealName(String realName) {
+        this.realName = realName;
+    }
 
     public String getCreate_time() {
         return create_time;

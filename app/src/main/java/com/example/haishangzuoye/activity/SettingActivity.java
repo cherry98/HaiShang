@@ -13,6 +13,9 @@ import androidx.appcompat.widget.SwitchCompat;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+/**
+ * 设置页面
+ */
 public class SettingActivity extends BaseActivity {
 
     @BindView(R.id.setting_message)

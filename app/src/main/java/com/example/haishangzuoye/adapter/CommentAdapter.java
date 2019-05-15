@@ -4,28 +4,27 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.haishangzuoye.R;
-import com.example.haishangzuoye.info.MessageInfo;
-
-import net.tsz.afinal.FinalBitmap;
+import com.example.haishangzuoye.info.CommentInfo;
 
 import java.util.List;
-import java.util.Map;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MessageAdapter extends RecyclerView.Adapter {
+/**
+ * 消息页面适配器
+ */
+public class CommentAdapter extends RecyclerView.Adapter {
 
     private Context context;
-    private List<MessageInfo> list;
+    private List<CommentInfo> list;
 
-    public MessageAdapter(Context context, List<MessageInfo> list) {
+    public CommentAdapter(Context context, List<CommentInfo> list) {
         this.context = context;
         this.list = list;
     }
@@ -39,9 +38,10 @@ public class MessageAdapter extends RecyclerView.Adapter {
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         ViewHolder viewHolder = (ViewHolder) holder;
-        MessageInfo messageInfo = list.get(position);
-        viewHolder.time.setText("时间：" + messageInfo.getCreate_time());
-        viewHolder.content.setText("内容：" + messageInfo.getContent());
+        CommentInfo commentInfo = list.get(position);
+        viewHolder.time.setText("留言时间：" + commentInfo.getCreate_time());
+        viewHolder.content.setText("留言内容：" + commentInfo.getContent());
+        viewHolder.name.setText("留言人：" + commentInfo.getRealName());
     }
 
     @Override
@@ -55,6 +55,8 @@ public class MessageAdapter extends RecyclerView.Adapter {
         TextView content;
         @BindView(R.id.time)
         TextView time;
+        @BindView(R.id.name)
+        TextView name;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);

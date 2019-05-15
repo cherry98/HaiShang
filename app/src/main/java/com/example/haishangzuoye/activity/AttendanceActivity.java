@@ -45,6 +45,9 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+/**
+ * 考勤页面
+ */
 public class AttendanceActivity extends BaseActivity {
 
     //定位都要通过LocationManager这个类实现

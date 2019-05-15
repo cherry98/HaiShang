@@ -45,7 +45,8 @@
             android:layout_height="40dp"
             android:layout_margin="10dp"
             android:background="@drawable/input_bg"
-            android:hint="请输入任务要求时间"
+            android:hint="请输入任务要求时间(单位为天)"
+            android:inputType="number"
             android:paddingLeft="10dp"
             android:textSize="14sp" />
 

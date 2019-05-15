@@ -33,6 +33,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * 发布任务
+ */
 public class PublishActivity extends BaseActivity {
 
     @BindView(R.id.input_title)

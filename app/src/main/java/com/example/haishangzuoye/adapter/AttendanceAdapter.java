@@ -16,6 +16,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+/**
+ * 考勤记录适配器
+ */
 public class AttendanceAdapter extends RecyclerView.Adapter {
 
     private Context context;

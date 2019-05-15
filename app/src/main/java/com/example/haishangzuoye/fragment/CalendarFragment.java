@@ -77,7 +77,7 @@ import static android.app.Activity.RESULT_CANCELED;
 
 
 /**
- * A simple {@link Fragment} subclass.
+ * 日历页面
  */
 public class CalendarFragment extends Fragment implements View.OnClickListener, OnCalendarClickListener {
 

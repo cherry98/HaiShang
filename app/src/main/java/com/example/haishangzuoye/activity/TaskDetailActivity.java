@@ -26,6 +26,9 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+/**
+ * 任务详情
+ */
 public class TaskDetailActivity extends BaseActivity {
 
     @BindView(R.id.title)

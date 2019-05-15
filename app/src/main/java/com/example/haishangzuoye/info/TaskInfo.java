@@ -26,6 +26,15 @@ public class TaskInfo {
     private String taskId;
     private String taskAddress;
     private String taskStatus;
+    private String taskHave;
+
+    public String getTaskHave() {
+        return taskHave;
+    }
+
+    public void setTaskHave(String taskHave) {
+        this.taskHave = taskHave;
+    }
 
     public String getTaskStatus() {
         return taskStatus;

@@ -19,7 +19,7 @@ import butterknife.ButterKnife;
 
 
 /**
- * A simple {@link Fragment} subclass.
+ * 我的页面
  */
 public class MyFragment extends Fragment implements View.OnClickListener {
 
