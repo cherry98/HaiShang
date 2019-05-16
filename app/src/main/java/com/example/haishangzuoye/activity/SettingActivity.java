@@ -1,10 +1,12 @@
 package com.example.haishangzuoye.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.Toast;
 
+import com.example.haishangzuoye.MainActivity;
 import com.example.haishangzuoye.R;
 import com.example.haishangzuoye.Utils.SharedPreferencesUtils;
 
@@ -53,6 +55,10 @@ public class SettingActivity extends BaseActivity {
 
     public void button_loginout(View view) {
         SharedPreferencesUtils.setLoggedStatus(this, false);
+        SharedPreferencesUtils.setUserId(this, "");
+        SharedPreferencesUtils.setImage(this, "");
+        startActivity(new Intent(this, LoginActivity.class));
+        MainActivity.mainActivity.finish();
         finish();
     }
 }

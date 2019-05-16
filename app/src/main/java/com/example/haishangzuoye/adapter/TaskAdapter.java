@@ -26,13 +26,11 @@ public class TaskAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private Context context;
     private List<TaskInfo> list;
     private OnItemClickListener onItemClickListener;
-    private boolean isWork;//是否是工作页面
     private boolean isMessage;//是否是消息页面
 
-    public TaskAdapter(Context context, List<TaskInfo> list, boolean isWork) {
+    public TaskAdapter(Context context, List<TaskInfo> list) {
         this.context = context;
         this.list = list;
-        this.isWork = isWork;
     }
 
     public void setMessage(boolean message) {
@@ -66,18 +64,14 @@ public class TaskAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         } else {
             viewHolder.status.setText("已完成");
         }
-        if (isWork) {
-            viewHolder.itemView.setOnClickListener(view ->
-                onItemClickListener.onItemClick(position));
-        }
+        viewHolder.itemView.setOnClickListener(view ->
+            onItemClickListener.onItemClick(position));
         if (isMessage) {
             if (!"2".equals(status)) {
                 viewHolder.comment.setVisibility(View.VISIBLE);
             } else {
                 viewHolder.comment.setVisibility(View.GONE);
             }
-            viewHolder.itemView.setOnClickListener(view ->
-                onItemClickListener.onItemClick(position));
             viewHolder.comment.setOnClickListener(view ->
                 onItemClickListener.comment(position));
         } else {

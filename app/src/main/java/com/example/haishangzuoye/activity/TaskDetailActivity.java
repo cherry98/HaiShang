@@ -2,6 +2,8 @@ package com.example.haishangzuoye.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -59,13 +61,19 @@ public class TaskDetailActivity extends BaseActivity {
             return;
         }
         taskStatus = intent.getStringExtra("taskStatus");
+        String typ = intent.getStringExtra("type");
         taskId = intent.getStringExtra("taskId");
-        if ("0".equals(taskStatus)) {
-            accept_task.setText("接受任务");
-        } else if ("1".equals(taskStatus)) {
-            accept_task.setText("完成任务");
+        if (!TextUtils.isEmpty(typ)) {
+            accept_task.setVisibility(View.VISIBLE);
+            if ("0".equals(taskStatus)) {
+                accept_task.setText("接受任务");
+            } else if ("1".equals(taskStatus)) {
+                accept_task.setText("完成任务");
+            } else {
+                accept_task.setText("已完成");
+            }
         } else {
-            accept_task.setText("已完成");
+            accept_task.setVisibility(View.GONE);
         }
         title.setText("任务标题：" + intent.getStringExtra("taskTitle"));
         type.setText("任务类型：" + intent.getStringExtra("taskType"));

@@ -74,7 +74,7 @@ public class WorkFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        taskAdapter = new TaskAdapter(getContext(), list, true);
+        taskAdapter = new TaskAdapter(getContext(), list);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
@@ -92,6 +92,7 @@ public class WorkFragment extends Fragment {
                 intent.putExtra("taskContent", taskInfo.getTaskContent());
                 intent.putExtra("taskStatus", taskInfo.getTaskStatus());
                 intent.putExtra("taskId", taskInfo.getTaskId());
+                intent.putExtra("type", "0");
                 startActivity(intent);
             }
 

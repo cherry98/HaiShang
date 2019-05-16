@@ -68,7 +68,7 @@ public class MessageFragment extends Fragment {
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
-        taskAdapter = new TaskAdapter(getContext(), list, false);
+        taskAdapter = new TaskAdapter(getContext(), list);
         taskAdapter.setMessage(true);
         recyclerView.setAdapter(taskAdapter);
         taskAdapter.setOnItemClickListener(new TaskAdapter.OnItemClickListener() {

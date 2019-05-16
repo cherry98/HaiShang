@@ -1,5 +1,6 @@
 package com.example.haishangzuoye.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -41,11 +42,32 @@ public class TaskHistoryActivity extends BaseActivity {
         setContentView(R.layout.activity_task_history);
         ButterKnife.bind(this);
         setToolBar();
-        taskAdapter = new TaskAdapter(this, list, false);
+        taskAdapter = new TaskAdapter(this, list);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(taskAdapter);
+        taskAdapter.setOnItemClickListener(new TaskAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(int position) {
+                TaskInfo taskInfo = list.get(position);
+                Intent intent = new Intent(TaskHistoryActivity.this, TaskDetailActivity.class);
+                intent.putExtra("taskTitle", taskInfo.getTaskTitle());
+                intent.putExtra("taskAddress", taskInfo.getTaskAddress());
+                intent.putExtra("taskDate", taskInfo.getTaskDate());
+                intent.putExtra("taskNumber", taskInfo.getTaskNumber());
+                intent.putExtra("taskType", taskInfo.getTypeName());
+                intent.putExtra("taskContent", taskInfo.getTaskContent());
+                intent.putExtra("taskStatus", taskInfo.getTaskStatus());
+                intent.putExtra("taskId", taskInfo.getTaskId());
+                startActivity(intent);
+            }
+
+            @Override
+            public void comment(int position) {
+
+            }
+        });
         getTaskList();
     }
 

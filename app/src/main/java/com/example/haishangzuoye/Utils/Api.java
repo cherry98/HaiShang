@@ -77,4 +77,12 @@ public interface Api {
     @FormUrlEncoded
     @POST("getUserAllTask")
     Call<ResponseBody> getUserAllTask(@Field("vars") String vars);
+
+    @FormUrlEncoded
+    @POST("addLog")
+    Call<ResponseBody> addLog(@Field("vars") String vars);
+
+    @FormUrlEncoded
+    @POST("logList")
+    Call<ResponseBody> logList(@Field("vars") String vars);
 }

@@ -52,11 +52,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private MessageFragment messageFragment;
     private MyFragment myFragment;
     private FragmentManager fragmentManager;
+    public static MainActivity mainActivity = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        mainActivity = this;
         ButterKnife.bind(this);
         work.setOnClickListener(this);
         calendar.setOnClickListener(this);
